@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second Brain — Setup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="setup.css">
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+
+      <div class="brand">
+        <img src="icons/icon.png" width="44" height="44" alt="">
+        <h1>Second Brain</h1>
+      </div>
+
+      <p class="subtitle">Connect your Cloudflare Worker to capture pages and highlights from any tab.</p>
+
+      <div id="form-section">
+        <div class="field">
+          <label for="worker-url">Worker URL</label>
+          <input
+            id="worker-url"
+            type="url"
+            placeholder="https://your-worker.workers.dev"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <span class="field-hint">The URL of your deployed Second Brain Cloudflare Worker.</span>
+        </div>
+
+        <div class="field">
+          <label for="auth-token">Auth Token</label>
+          <div class="input-wrap">
+            <input
+              id="auth-token"
+              type="password"
+              placeholder="your-auth-token"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button id="btn-toggle-token" class="toggle-btn" type="button" aria-label="Show token">
+              <svg id="icon-show" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg id="icon-hide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+                <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/>
+                <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
+          <span class="field-hint">Your AUTH_TOKEN Cloudflare secret — set when you deployed the Worker.</span>
+        </div>
+
+        <button id="btn-connect" class="btn-primary">
+          <span id="btn-label">Connect</span>
+          <div id="btn-spinner" class="btn-spinner hidden"></div>
+        </button>
+
+        <div id="status" class="status hidden"></div>
+      </div>
+
+      <div id="success-section" class="success-section hidden">
+        <div class="success-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5B8A6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <h2 class="success-title">You're connected!</h2>
+        <p id="success-count" class="success-desc"></p>
+        <p class="success-desc">Click the Second Brain icon in your toolbar to start capturing pages.</p>
+        <button id="btn-close" class="btn-primary btn-outline">Close Tab</button>
+      </div>
+
+    </div>
+  </div>
+  <script src="setup.js"></script>
+</body>
+</html>

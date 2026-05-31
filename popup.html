@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second Brain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="root">
+
+    <!-- Loading -->
+    <div id="view-loading" class="view">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Not configured -->
+    <div id="view-not-configured" class="view hidden">
+      <div class="onboard-wrap">
+        <div class="brand-large">
+          <img src="icons/icon.png" width="36" height="36" alt="">
+          <span>Second Brain</span>
+        </div>
+        <p class="onboard-desc">Connect your Cloudflare Worker to start capturing pages and highlights to your second brain.</p>
+        <button id="btn-open-setup" class="btn-primary">Get Started</button>
+      </div>
+    </div>
+
+    <!-- Capture -->
+    <div id="view-capture" class="view hidden">
+      <header class="header">
+        <div class="brand">
+          <img src="icons/icon.png" width="24" height="24" alt="">
+          <span class="brand-name">Second Brain</span>
+        </div>
+        <button id="btn-settings" class="icon-btn" aria-label="Settings" title="Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+          </svg>
+        </button>
+      </header>
+
+      <div class="page-info">
+        <div class="page-title" id="page-title"></div>
+        <div class="page-url" id="page-url"></div>
+      </div>
+
+      <div id="selection-badge" class="selection-badge hidden">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+        </svg>
+        <span id="selection-text" class="selection-text"></span>
+      </div>
+
+      <textarea
+        id="note"
+        class="note-input"
+        placeholder="Add a note… use #hashtags to tag"
+        rows="3"
+        maxlength="500"
+      ></textarea>
+
+      <button id="btn-capture" class="btn-primary btn-capture">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
+          <polyline points="17 21 17 13 7 13 7 21"/>
+          <polyline points="7 3 7 8 15 8"/>
+        </svg>
+        <span id="btn-capture-label">Capture</span>
+      </button>
+
+      <div id="status" class="status hidden"></div>
+
+      <div class="tips">
+        <div class="tip">
+          <span class="tip-label">Open popup</span>
+          <span class="tip-keys"><kbd class="kbd-modifier"></kbd><kbd>Shift</kbd><kbd>B</kbd></span>
+        </div>
+        <div class="tip">
+          <span class="tip-label">Quick capture</span>
+          <span class="tip-keys"><kbd class="kbd-modifier"></kbd><kbd>Shift</kbd><kbd>S</kbd></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
