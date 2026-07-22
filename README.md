@@ -1,6 +1,10 @@
-# Second Brain — Browser Extension
+<p align="center">
+  <a href="https://www.thesecondbrain.dev"><img src="https://www.thesecondbrain.dev/logos/sb-lockup.svg" alt="Second Brain" width="400"></a>
+</p>
 
-Capture any page or highlighted text to your [Second Brain](https://github.com/rahilp/second-brain-cloudflare) with one click or a keyboard shortcut — without leaving the tab.
+<h3 align="center">Browser Extension</h3>
+
+Capture any page or highlighted text to your [Second Brain](https://github.com/rahilp/second-brain-cloudflare) with one click or a keyboard shortcut, without leaving the tab.
 
 ---
 
