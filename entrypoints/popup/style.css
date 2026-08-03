@@ -348,3 +348,29 @@ kbd.kbd-modifier {
   /* ⌥ is narrower than 'Alt' — min-width keeps the layout stable */
   min-width: 28px;
 }
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 16px 10px;
+  border-top: 0.5px solid var(--border-light);
+  background: var(--surface-warm);
+  font-size: 11px;
+}
+
+.footer a {
+  color: var(--text-disabled);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer a:hover {
+  color: var(--accent);
+}
+
+.footer-dot {
+  color: var(--text-disabled);
+}
