@@ -163,7 +163,9 @@ entrypoints/
   setup/                  — First-run setup and settings page
 public/
   icon/                   — Extension icons (16/48/128)
-  icons/icon.png          — Logo used inside the UI pages
+  icons/                  — Brand SVGs used inside the UI pages (lockup + mark)
+icons/
+  sb-mark-square.svg      — Source for the extension icons (see icons/README.md)
 .output/                  — Built extensions (chrome-mv3, firefox-mv2) — generated
 ```
 
