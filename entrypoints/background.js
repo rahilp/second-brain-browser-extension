@@ -14,14 +14,14 @@ export default defineBackground(() => {
     const { workerUrl, authToken } = await browser.storage.sync.get(['workerUrl', 'authToken']);
 
     if (!workerUrl || !authToken) {
-      flashBadge('!', '#B0503C');
+      flashBadge('!', '#b42318');
       return;
     }
 
     const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
 
     if (!tab?.url || isRestrictedUrl(tab.url)) {
-      flashBadge('!', '#B0503C');
+      flashBadge('!', '#b42318');
       return;
     }
 
@@ -42,7 +42,7 @@ export default defineBackground(() => {
 
     // Show pending state on badge
     action.setBadgeText({ text: '…' });
-    action.setBadgeBackgroundColor({ color: '#B26641' });
+    action.setBadgeBackgroundColor({ color: '#fd540a' });
 
     try {
       const res = await fetch(`${workerUrl.replace(/\/$/, '')}/capture`, {
@@ -57,7 +57,7 @@ export default defineBackground(() => {
       const data = await res.json();
 
       if (!data.ok && data.duplicate) {
-        flashBadge('~', '#8A4E2F');
+        flashBadge('~', '#a15c00');
         notify(tab.id, 'Already in your brain', `"${tab.title}" was captured before (${data.score}% match).`, 'warning');
       } else if (data.ok) {
         const msg = data.action === 'merged'
@@ -65,14 +65,14 @@ export default defineBackground(() => {
           : data.action === 'replaced'
           ? 'Updated an existing memory.'
           : `"${tab.title}" saved to your second brain.`;
-        flashBadge('✓', '#5B8A6B');
+        flashBadge('✓', '#18794e');
         notify(tab.id, 'Captured!', msg, 'success');
       } else {
-        flashBadge('!', '#B0503C');
+        flashBadge('!', '#b42318');
         notify(tab.id, 'Capture failed', data.error || 'Something went wrong.', 'error');
       }
     } catch {
-      flashBadge('!', '#B0503C');
+      flashBadge('!', '#b42318');
       notify(tab.id, 'Capture failed', 'Could not reach your worker.', 'error');
     }
   });
@@ -94,7 +94,7 @@ export default defineBackground(() => {
       func: (title, message, type) => {
         document.getElementById('__sb-toast__')?.remove();
 
-        const accent = type === 'success' ? '#5B8A6B' : type === 'warning' ? '#B26641' : '#B0503C';
+        const accent = type === 'success' ? '#18794e' : type === 'warning' ? '#ff8a3d' : '#b42318';
 
         const toast = document.createElement('div');
         toast.id = '__sb-toast__';
@@ -103,10 +103,10 @@ export default defineBackground(() => {
           'top:24px',
           'right:24px',
           'z-index:2147483647',
-          'background:#1a1a1a',
+          'background:#161616',
           'border:none',
           `border-left:3px solid ${accent}`,
-          'border-radius:10px',
+          'border-radius:13px',
           'padding:11px 15px',
           'box-shadow:0 4px 16px rgba(0,0,0,0.3)',
           "font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif",
@@ -126,7 +126,7 @@ export default defineBackground(() => {
         t.textContent = title;
 
         const m = document.createElement('div');
-        m.style.cssText = 'color:rgba(255,255,255,0.65);font-size:12px;line-height:1.45';
+        m.style.cssText = 'color:#c9c5c1;font-size:12px;line-height:1.45';
         m.textContent = message;
 
         toast.append(t, m);
